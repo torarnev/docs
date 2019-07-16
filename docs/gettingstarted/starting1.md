@@ -23,3 +23,4 @@ Before you can start using the API, you will receive 2 pieces of information tha
 If you want to accept Card payment, you will also need a Merchant account (see below).
 
 ## Typical Flow of a Credit Card Payment
+![Flow](https://raw.githubusercontent.com/torarnev/docs/master/docs/samples/images/start1.png)
