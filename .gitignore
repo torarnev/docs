@@ -268,3 +268,8 @@ App_Data
 #exes
 *.exe
 Common.PaymentCore.Web.UITests/chrome-win32/
+
+#Node modules (for now)
+node_modules
+
+package-lock.json

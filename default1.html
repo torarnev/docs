@@ -4,12 +4,27 @@
 	<title>ReDoc</title>
 	<!-- needed for adaptive design -->
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+<!-- ReDoc doesn't change outer page styles -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    
 </head>
 <body>
+<!-- 
+<header>
+  <div id="primary-menu" class="outer-container"> <a href="https://linkmobility.com/" class="custom-logo-link"> <img src="https://linkmobility.com/wp-content/uploads/2019/06/cropped-logo-594x92-3.png" class="custom-logo"> </a>
+    </div>
+</header> -->
+  
 <redoc spec-url="https://torarnev.github.io/docs/json/gatewayapi.json"></redoc>
-<script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"></script>
-
+<!-- <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/redoc/bundles/redoc.standalone.js"></script> 
+<!-- <script src="node_modules/redoc/bundles/redoc.standalone.js"> </script>  -->
 </body>
 </html>

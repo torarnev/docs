@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ReDoc</title>
+	<!-- needed for adaptive design -->
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+    <link href="default3.css" rel="stylesheet">
+<!-- ReDoc doesn't change outer page styles -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+
+        <div id="mySidenav" class="sidenav">
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+              </div>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()">open</span>
+
+<script src="node_modules\redoc\bundles\redoc.standalone.js"></script>
+<section id="redoc-section">
+    <redoc />
+</section>
+
+<script>
+    // initially render first API
+    Redoc.init('https://torarnev.github.io/docs/json/gatewayapi.json', 
+                {
+                    scrollYOffset: '50'
+                }
+            )
+
+    // Redoc.init('https://torarnev.github.io/docs/json/gatewayapi.json', 
+    //             {
+    //                 scrollYOffset: 50,
+    //                 disableSearch: true
+    //             }
+    //             , document.getElementById('redoc-container'))
+
+</script>
+
+
+</body>
+</html>
