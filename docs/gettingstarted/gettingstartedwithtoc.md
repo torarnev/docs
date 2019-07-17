@@ -1,5 +1,5 @@
-- [1. Getting started](#1-Getting-started)
-  - [1.1. Typical Flow of a Credit Card Payment](#11-Typical-Flow-of-a-Credit-Card-Payment)
+<!-- TOC depthFrom:2 insertAnchor:true -->autoauto- [1.1. Typical Flow of a Credit Card Payment](#11-typical-flow-of-a-credit-card-payment)autoauto<!-- /TOC -->
+
 
 # 1. Getting started
 
@@ -26,6 +26,8 @@ Before you can start using the API, you will receive 2 pieces of information tha
 
 If you want to accept Card payment, you will also need a Merchant account (see below).
 
+
 ## 1.1. Typical Flow of a Credit Card Payment
+
 ![Flow](https://raw.githubusercontent.com/torarnev/docs/master/docs/samples/images/start1.png)
 
