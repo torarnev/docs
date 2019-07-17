@@ -1,11 +1,11 @@
 
-- [1. Getting started {: #header-getting-started }](#1-Getting-started--header-getting-started)
-  - [1. Typical Flow of a Credit Card Payment](#1-Typical-Flow-of-a-Credit-Card-Payment)
+- [1. Getting started](#1-Getting-started)
+  - [1.1. Typical Flow of a Credit Card Payment](#11-Typical-Flow-of-a-Credit-Card-Payment)
 
 
 
 <a id="markdown-1-getting-started" name="1-getting-started"></a>
-# 1. Getting started {: #header-getting-started }
+# 1. Getting started
 
 
 ```
@@ -32,7 +32,7 @@ If you want to accept Card payment, you will also need a Merchant account (see b
 
 
 <a id="markdown-1-typical-flow-of-a-credit-card-payment" name="1-typical-flow-of-a-credit-card-payment"></a>
-## 1. Typical Flow of a Credit Card Payment
+## 1.1. Typical Flow of a Credit Card Payment
 
 ![Flow](https://raw.githubusercontent.com/torarnev/docs/master/docs/samples/images/start1.png)
 
