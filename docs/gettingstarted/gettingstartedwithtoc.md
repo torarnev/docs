@@ -1,11 +1,11 @@
 
-- [1. Getting started](#1-getting-started)
-  - [1. Typical Flow of a Credit Card Payment](#1-typical-flow-of-a-credit-card-payment)
+- [1. Getting started {: #header-getting-started }](#1-Getting-started--header-getting-started)
+  - [1. Typical Flow of a Credit Card Payment](#1-Typical-Flow-of-a-Credit-Card-Payment)
 
 
 
 <a id="markdown-1-getting-started" name="1-getting-started"></a>
-# 1. Getting started
+# 1. Getting started {: #header-getting-started }
 
 
 ```
