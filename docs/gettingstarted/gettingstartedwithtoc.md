@@ -4,7 +4,7 @@
 
 
 
-<a id="getting-started" name="getting-started"></a>
+<a id="1-Getting-started" name="1-Getting-started"></a>
 # 1. Getting started
 
 
@@ -31,7 +31,7 @@ Before you can start using the API, you will receive 2 pieces of information tha
 If you want to accept Card payment, you will also need a Merchant account (see below).
 
 
-<a id="typical-flow-of-a-credit-card-payment" name="typical-flow-of-a-credit-card-payment"></a>
+<a id="11-Typical-Flow-of-a-Credit-Card-Payment" name="11-Typical-Flow-of-a-Credit-Card-Payment"></a>
 ## 1.1. Typical Flow of a Credit Card Payment
 
 ![Flow](https://raw.githubusercontent.com/torarnev/docs/master/docs/samples/images/start1.png)
