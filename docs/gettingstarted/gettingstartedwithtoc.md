@@ -1,8 +1,10 @@
+
+<!-- TOC -->
 [Contents](#content-id)
 - [1. Getting started](#1-Getting-started)
   - [1.1. Typical Flow of a Credit Card Payment](#11-Typical-Flow-of-a-Credit-Card-Payment)
 
-
+<!-- /TOC -->
 
 <a id="1-Getting-started" name="1-Getting-started"></a>
 # 1. Getting started
