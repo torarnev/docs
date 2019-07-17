@@ -1,6 +1,6 @@
 
-- [1. Getting started](#1-Getting-started)
-  - [1. Typical Flow of a Credit Card Payment](#1-Typical-Flow-of-a-Credit-Card-Payment)
+- [1. Getting started](#1-getting-started)
+  - [1. Typical Flow of a Credit Card Payment](#1-typical-flow-of-a-credit-card-payment)
 
 
 
