@@ -1,7 +1,7 @@
-<!-- TOC insertAnchor:true orderedList:false -->
+
 - [1. Getting started](#1-Getting-started)
   - [1. Typical Flow of a Credit Card Payment](#1-Typical-Flow-of-a-Credit-Card-Payment)
-<!-- /TOC -->
+
 
 
 <a id="markdown-1-getting-started" name="1-getting-started"></a>
