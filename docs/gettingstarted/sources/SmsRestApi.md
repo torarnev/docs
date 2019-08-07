@@ -4,9 +4,58 @@ Version 1.6; Last updated July 03, 201 9
 
 
 Contents
+<!-- TOC depthFrom:1 insertAnchor:true -->
 
+- [1. Before you begin](#1-before-you-begin)
+- [2. Scope of this document](#2-scope-of-this-document)
+- [3. Capabilities of “Common” platform](#3-capabilities-of-common-platform)
+- [4. Terms and glossary](#4-terms-and-glossary)
+  - [4.1. Size limits](#41-size-limits)
+  - [4.2. MT](#42-mt)
+  - [4.3. MO](#43-mo)
+  - [4.4. Charged, Premium](#44-charged-premium)
+  - [4.5. Bulk](#45-bulk)
+  - [4.6. Delivery Report](#46-delivery-report)
+  - [4.7. TON](#47-ton)
+  - [4.8. KeyValue](#48-keyvalue)
+  - [4.9. Character Encoding](#49-character-encoding)
+  - [4.10. IP Addresses](#410-ip-addresses)
+- [5. Sending MT messages](#5-sending-mt-messages)
+  - [5.1. Base URL:s](#51-base-urls)
+  - [5.2. Authentication](#52-authentication)
+  - [5.3. HTTP Methods, statuses, and actions](#53-http-methods-statuses-and-actions)
+    - [5.3.1. POST 200 OK](#531-post-200-ok)
+    - [5.3.2. 3](#532-3)
+    - [5.3.3. 1](#533-1)
+  - [5.4. Methods](#54-methods)
+  - [5.5. DCS](#55-dcs)
+  - [5.6. TON](#56-ton)
+  - [5.7. Error Result Codes](#57-error-result-codes)
+  - [5.8. Example](#58-example)
+  - [5.9. Success Result..............................................................................................................................................](#59-success-result)
+- [6. Batch sending MT messages](#6-batch-sending-mt-messages)
+  - [6.1. batchSendRequest](#61-batchsendrequest)
+  - [6.2. Batch sending example](#62-batch-sending-example)
+  - [6.3. Success Result............................................................................................................................................](#63-success-result)
+- [7. Sending flash sms](#7-sending-flash-sms)
+  - [7.1. Example 1](#71-example-1)
+  - [7.2. Example 2](#72-example-2)
+- [8. Scheduled delivery of MT messages](#8-scheduled-delivery-of-mt-messages)
+  - [8.1. Example](#81-example)
+    - [8.1.1. {](#811)
+- [9. Delivery Reports](#9-delivery-reports)
+  - [9.1. Result Codes](#91-result-codes)
+  - [9.2. Delivery Report Example](#92-delivery-report-example)
+- [10. Appendix](#10-appendix)
+- [11. Appendix](#11-appendix)
+  - [11.1. Silent Billing](#111-silent-billing)
+  - [11.2. Norway (Strex) only](#112-norway-strex-only)
+- [12. Changelog of this document](#12-changelog-of-this-document)
 
-## 0.1. Before you begin
+<!-- /TOC -->
+
+<a id="markdown-1-before-you-begin" name="1-before-you-begin"></a>
+## 1. Before you begin
 
 Please make sure that Link Mobility Support has provided you with the following
 information:
@@ -18,7 +67,8 @@ To use Delivery Reports, make sure you have made an opening in any firewalls so 
 Common can connect to you to transfer Delivery Reports. The addresses to open for are
 listed below.
 
-## 0.2. Scope of this document
+<a id="markdown-2-scope-of-this-document" name="2-scope-of-this-document"></a>
+## 2. Scope of this document
 
 This document will describe the Application Programming Interface (API) to send text
 messages through the Link Mobility “Common” platform. It will also describe the
@@ -27,7 +77,8 @@ A separate document describes the API for _receiving_ text messages.
 Common is a REST API. This means it uses HTTP verbs to receive commands. A basic
 familiarity with REST APIs is assumed, as well as a familiarity with JSON.
 
-## 0.3. Capabilities of “Common” platform
+<a id="markdown-3-capabilities-of-common-platform" name="3-capabilities-of-common-platform"></a>
+## 3. Capabilities of “Common” platform
 
 Common is a high-capacity, high-availability SMS Gateway designed to let you send and
 receive SMS Text messages, as well as receive a notification when the text message is
@@ -48,9 +99,11 @@ Reports can be sent in JSON, HTTP GET or POST formats.
 
 
 
-## 0.4. Terms and glossary
+<a id="markdown-4-terms-and-glossary" name="4-terms-and-glossary"></a>
+## 4. Terms and glossary
 
-### 0.4.1. Size limits
+<a id="markdown-41-size-limits" name="41-size-limits"></a>
+### 4.1. Size limits
 
 An SMS Text message can be a maximum of 140 bytes. With the most common character
 encoding, GSM-7, this translates to 160 characters. If your message is longer than 140 bytes,
@@ -58,17 +111,20 @@ it must be split into multiple messages, and preceded by a header signifying tha
 multipart message. Common can handle this splitting, concatenation, and the overhead
 unless you want to do it yourself.
 
-### 0.4.2. MT
+<a id="markdown-42-mt" name="42-mt"></a>
+### 4.2. MT
 
 Mobile Terminated. Refers to any SMS message which is sent to a mobile phone. (The
 message is terminated, or “ends”, at the phone.)
 
-### 0.4.3. MO
+<a id="markdown-43-mo" name="43-mo"></a>
+### 4.3. MO
 
 Mobile Originated. Refers to any SMS message which is sent from a mobile phone. (The
 message’s origin, or beginning, is at the phone.)
 
-### 0.4.4. Charged, Premium
+<a id="markdown-44-charged-premium" name="44-charged-premium"></a>
+### 4.4. Charged, Premium
 
 An MT message can cost money for the end-user to receive. This is usually referred to as a
 charged message or premium message. If you are going to send charged messages to end-
@@ -77,36 +133,42 @@ available in some countries and shortcodes. In certain markets, you can charge t
 users without actually sending them a message, so-called "Silent billing". Support will be
 happy to advise you if you are in doubt.
 
-### 0.4.5. Bulk
+<a id="markdown-45-bulk" name="45-bulk"></a>
+### 4.5. Bulk
 
 A message which does not cost money for the end-user to receive. Bulk messages can set
 their Source (the “From”-field) of the message to any text, 2-11 characters a-Z. Using this
 feature to impersonate other parties will lead to a termination of your account.
 
-### 0.4.6. Delivery Report
+<a id="markdown-46-delivery-report" name="46-delivery-report"></a>
+### 4.6. Delivery Report
 
 For each MT message we send, we can send you an acknowledgement when the message is
 confirmed received by the end-user’s handset. If the message fails for any reason, we will
 inform you about this. Delivery reports are mandatory for charged messages, optional for
 bulk.
 
-### 0.4.7. TON
+<a id="markdown-47-ton" name="47-ton"></a>
+### 4.7. TON
 
 Type of Number. This identifies how systems shall interpret your Source (your “From”-field).
 It can be a Shortcode, an alphanumeric string, or a phone number (MSISDN). Same applies
 for the Destination, or recipient, of the message, though destination will almost always be
 an MSISDN.
 
-### 0.4.8. KeyValue
+<a id="markdown-48-keyvalue" name="48-keyvalue"></a>
+### 4.8. KeyValue
 
 Map with string key and string value where you may specify unique parameters.
 
-### 0.4.9. Character Encoding
+<a id="markdown-49-character-encoding" name="49-character-encoding"></a>
+### 4.9. Character Encoding
 
 All communication to and from Common will be using UTF-8 encoding.
 
 
-### 0.4.10. IP Addresses
+<a id="markdown-410-ip-addresses" name="410-ip-addresses"></a>
+### 4.10. IP Addresses
 
 When Common is delivering a Delivery Report to you, the requests can be coming from
 several different IP addresses.
@@ -114,9 +176,11 @@ Appendix 1 contains the hostnames and IP addresses that are currently active.
 Please configure your firewalls so that these hosts/networks can connect to your systems to
 deliver messages.
 
-## 0.5. Sending MT messages
+<a id="markdown-5-sending-mt-messages" name="5-sending-mt-messages"></a>
+## 5. Sending MT messages
 
-### 0.5.1. Base URL:s
+<a id="markdown-51-base-urls" name="51-base-urls"></a>
+### 5.1. Base URL:s
 
 You will get one of these URL:s assigned to you when your account is created:
 
@@ -127,12 +191,14 @@ https://s-eu.linkmobility.io/sms
 https://no.linkmobility.io/sms
 https://deb.linkmobility.io/sms**
 
-### 0.5.2. Authentication
+<a id="markdown-52-authentication" name="52-authentication"></a>
+### 5.2. Authentication
 
 Authenticate in the HTTP request using Basic Authentication with the username and
 password provided by Support.
 
-### 0.5.3. HTTP Methods, statuses, and actions
+<a id="markdown-53-http-methods-statuses-and-actions" name="53-http-methods-statuses-and-actions"></a>
+### 5.3. HTTP Methods, statuses, and actions
 
 ```
 HTTP
@@ -146,7 +212,8 @@ response
 ```
 No access Invalid request Invalid login
 ```
-#### 0.5.3.1. POST 200 OK
+<a id="markdown-531-post-200-ok" name="531-post-200-ok"></a>
+#### 5.3.1. POST 200 OK
 
 ```
 Returns
@@ -156,7 +223,8 @@ SendResponse
 204 No
 Content
 ```
-#### 0.5.3.2. 3
+<a id="markdown-532-3" name="532-3"></a>
+#### 5.3.2. 3
 
 ```
 Forbidden
@@ -169,7 +237,8 @@ Request
 Returns
 ErrorResponse
 ```
-#### 0.5.3.3. 1
+<a id="markdown-533-1" name="533-1"></a>
+#### 5.3.3. 1
 
 ```
 Unauthorized
@@ -179,7 +248,8 @@ ErrorResponse
 
 
 
-### 0.5.4. Methods
+<a id="markdown-54-methods" name="54-methods"></a>
+### 5.4. Methods
 
 **POST /sms/send**
 Submits a message object for delivery to a mobile phone. Set Content-Type:
@@ -301,7 +371,8 @@ when you submit the message. This is not a delivery
 report, only a confirmation of message submission.
 Default is true.
 ```
-### 0.5.5. DCS
+<a id="markdown-55-dcs" name="55-dcs"></a>
+### 5.5. DCS
 
 Data Coding Scheme sets the encoding used for the message. Default and recommended is
 TEXT.
@@ -312,7 +383,8 @@ GSM** GSM-7 default alphabet encoding.
 **TEXT** Server side handling of encoding and
 segmenting. Recommended.
 
-### 0.5.6. TON
+<a id="markdown-56-ton" name="56-ton"></a>
+### 5.6. TON
 
 TON stands for Type of Number and designates how a number is to be interpreted.
 **TON value Description
@@ -325,7 +397,8 @@ all characters. Safe characters are a-z, A-Z,
 **MSISDN** A mobile number, international format,
 starting with +.
 
-### 0.5.7. Error Result Codes
+<a id="markdown-57-error-result-codes" name="57-error-result-codes"></a>
+### 5.7. Error Result Codes
 
 ```
 Result
@@ -349,7 +422,8 @@ transaction.
 
 
 
-### 0.5.8. Example
+<a id="markdown-58-example" name="58-example"></a>
+### 5.8. Example
 
 In this example, the platformId and platformPartnerId and deliveryReportGates are set to
 invalid values. The values that are correct for you will be provided by Support.
@@ -368,7 +442,8 @@ This JSON would be POSTed to **https://[your assigned URL]/sms/send**
 "useDeliveryReport": false
 }
 
-### 0.5.9. Success Result..............................................................................................................................................
+<a id="markdown-59-success-result" name="59-success-result"></a>
+### 5.9. Success Result..............................................................................................................................................
 
 On a successful request, Common will reply with HTTP 200 OK, or HTTP 204 No Content if
 “ignoreResponse” is set to TRUE.
@@ -400,7 +475,8 @@ arrives, it will include the same messageId.
 
 
 
-## 0.6. Batch sending MT messages
+<a id="markdown-6-batch-sending-mt-messages" name="6-batch-sending-mt-messages"></a>
+## 6. Batch sending MT messages
 
 If you want to send many messages at one time, you can use the Batch Sender to send
 multiple messages at once, reducing connection overhead. You will receive an array of
@@ -413,7 +489,8 @@ same as if you were sending a single MT message. Delivery reports are handled no
 The URL for submitting batch messages is
 **https://[your assigned URL]/sms/sendbatch**
 
-### 0.6.1. batchSendRequest
+<a id="markdown-61-batchsendrequest" name="61-batchsendrequest"></a>
+### 6.1. batchSendRequest
 
 ```
 Parameter Data type Description
@@ -559,7 +636,8 @@ that are in the batchSendRequest.
 ```
 
 
-### 0.6.2. Batch sending example
+<a id="markdown-62-batch-sending-example" name="62-batch-sending-example"></a>
+### 6.2. Batch sending example
 
 The following JSON would send a message to two recipients at the same time.
 {
@@ -587,7 +665,8 @@ The following JSON would send a message to two recipients at the same time.
 ]
 }
 
-### 0.6.3. Success Result............................................................................................................................................
+<a id="markdown-63-success-result" name="63-success-result"></a>
+### 6.3. Success Result............................................................................................................................................
 
 On a successful request, Common will reply with HTTP 200 OK, or HTTP 204 No Content if
 “ignoreResponse” is set to TRUE. In the body you will find an array of Json objects, every
@@ -638,7 +717,8 @@ parameter wouldn’t be shown.
 Please note that this is not a delivery report. Save the messageId; when the delivery report
 arrives, it will include the same messageId.
 
-## 0.7. Sending flash sms
+<a id="markdown-7-sending-flash-sms" name="7-sending-flash-sms"></a>
+## 7. Sending flash sms
 
 This is possible by just adding the customParameter “flash.sms” with the case insensitive
 String values “true” or “false” within the request object. The default value for this
@@ -666,7 +746,8 @@ within the SendRequestMessage. But if this customParameter is added within the
 batchSendRequest, then it will override its value for all the messages within this single
 batchSendRequest.
 
-### 0.7.1. Example 1
+<a id="markdown-71-example-1" name="71-example-1"></a>
+### 7.1. Example 1
 
 Here, all the messages will be sent as flash sms, even if the flash.sms customParameter is
 found with the value “false”within a sendRequestMessage:
@@ -705,7 +786,8 @@ found with the value “false”within a sendRequestMessage:
 
 
 
-### 0.7.2. Example 2
+<a id="markdown-72-example-2" name="72-example-2"></a>
+### 7.2. Example 2
 
 Here, the first message will be sent as a flash SMS, meanwhile the second one and the third
 one will be sent as normal SMS. This will work if the customParameter “flash.sms” is absent
@@ -752,16 +834,19 @@ in the batchSendRequest.
 
 
 
-## 0.8. Scheduled delivery of MT messages
+<a id="markdown-8-scheduled-delivery-of-mt-messages" name="8-scheduled-delivery-of-mt-messages"></a>
+## 8. Scheduled delivery of MT messages
 
 Messages may be scheduled for a later delivery but at most 3 months in the future.
 
 Add the custom parameter “scheduledTime” with the value as the date that the message
 should be sent. The date should be formatted according to RFC3339.
 
-### 0.8.1. Example
+<a id="markdown-81-example" name="81-example"></a>
+### 8.1. Example
 
-#### 0.8.1.1. {
+<a id="markdown-811-" name="811-"></a>
+#### 8.1.1. {
 
 "source": "LINK",
 "destination": "+4799999999",
@@ -774,7 +859,8 @@ should be sent. The date should be formatted according to RFC3339.
 }
 }
 
-## 0.9. Delivery Reports
+<a id="markdown-9-delivery-reports" name="9-delivery-reports"></a>
+## 9. Delivery Reports
 
 When an MT message is delivered to a handset, or fails for any reason, you will receive a
 callback with a delivery report. This is required for charged messages, optional (but
@@ -849,7 +935,8 @@ important.
 
 
 
-### 0.9.1. Result Codes
+<a id="markdown-91-result-codes" name="91-result-codes"></a>
+### 9.1. Result Codes
 
 The most common result code is 1001 Delivered. This code indicates a successful delivery
 (and payment, if charged) of the message. Most statuses are final, indicating that the
@@ -969,7 +1056,8 @@ BILLED
 
 
 
-### 0.9.2. Delivery Report Example
+<a id="markdown-92-delivery-report-example" name="92-delivery-report-example"></a>
+### 9.2. Delivery Report Example
 
 The following example is an example of a successfully delivered message. refId and id have
 been set to invalid values in this example.
@@ -1009,7 +1097,8 @@ example.
 
 
 
-## 0.10. Appendix
+<a id="markdown-10-appendix" name="10-appendix"></a>
+## 10. Appendix
 
 The following hosts are currently used for outgoing messaging.
 
@@ -1040,9 +1129,11 @@ s20.c-eu.linkmobility.io 62.67.62.1 20
 
 
 
-## 0.11. Appendix
+<a id="markdown-11-appendix" name="11-appendix"></a>
+## 11. Appendix
 
-### 0.11.1. Silent Billing
+<a id="markdown-111-silent-billing" name="111-silent-billing"></a>
+### 11.1. Silent Billing
 
 To perform a Silent Billing (billing the end-user without them receiving a text message on
 their phone) set the customParameter "chargeOnly" to "true" (the string "true", not the
@@ -1076,7 +1167,8 @@ Only TON “SHORTNUMBER” is accepted for charged messages.)
 ]
 }
 
-### 0.11.2. Norway (Strex) only
+<a id="markdown-112-norway-strex-only" name="112-norway-strex-only"></a>
+### 11.2. Norway (Strex) only
 
 You must also set the customParameter "authorize" to "true", and "strex.username" to your
 company's Strex MerchantID. On the FIRST time you bill an end-user silently, you must also
@@ -1085,7 +1177,8 @@ requests, this parameter should not be present.
 
 
 
-## 0.12. Changelog of this document
+<a id="markdown-12-changelog-of-this-document" name="12-changelog-of-this-document"></a>
+## 12. Changelog of this document
 
 ```
 Date Version Author Changes
