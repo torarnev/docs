@@ -1,9 +1,3 @@
-LINK Mobility SMS REST API
-
-Version 1.6; Last updated July 03, 201 9
-
-
-Contents
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
 - [1. Before you begin](#1-before-you-begin)
