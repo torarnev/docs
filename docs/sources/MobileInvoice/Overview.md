@@ -11,8 +11,6 @@
 
 <!-- /TOC -->
 
-
-
 <a id="markdown-common-user-stories" name="common-user-stories"></a>
 # Common user stories
 
