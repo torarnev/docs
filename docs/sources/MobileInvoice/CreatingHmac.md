@@ -1,5 +1,3 @@
-**Mobile Invoice Api - Getting started - creating hmac**
-
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
 - [Step 1 - Generating the string to be signed](#step-1---generating-the-string-to-be-signed)

@@ -1,5 +1,3 @@
-**Mobile Invoice Api - Getting started**
-
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
 - [Get started](#get-started)

@@ -1,5 +1,3 @@
-**Mobile Invoice Api - Overview**
-
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
 - [Common user stories](#common-user-stories)
