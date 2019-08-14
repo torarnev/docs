@@ -11,3 +11,5 @@
 ### Downloads
 [SDK Client](downloads/payment-core-client.zip)
 
+[SDK Client (mirror)](payment-core-client.zip)
+
