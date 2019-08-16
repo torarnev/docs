@@ -13,3 +13,10 @@
 
 [SDK Client (mirror)](payment-core-client.zip)
 
+
+
+| Language | Url |
+| --- | --- |
+| C# | [HMAC sample c#](sample1.md) |
+| Java | [HMAC sample java](hmacSampleJava.md) |
+
