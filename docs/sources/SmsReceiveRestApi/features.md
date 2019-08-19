@@ -1,5 +1,7 @@
-## Contents
+# Contents
+<!-- TOC depthFrom:1 insertAnchor:true -->
 
+<!-- /TOC -->
 
 
 ## Before you begin
@@ -55,10 +57,10 @@ Example
 When Common forwards an MO message to you, it will be POST:ed to your service, in either
 XML or JSON formats. The format is described in the following table:
 
+### Parameters
 
-
-**Parameter**            | Data type | Description 
------------------------- | --------- | -----------
+**Parameter**            | **Data type** | **Description** 
+------------------------ | ------------- | ---------------
 **destination**          | String    | The shortnumber the message was sent to. Prefixed by a two-letter country code.
 **subNumber**            | Integer   | If subnumbers are used, the subnumber will be here.
 **source**               | String    | The phone number of the sender, in MSISDN format (international format)
@@ -70,75 +72,42 @@ XML or JSON formats. The format is described in the following table:
 **operatorMessageId**    | String    | The operator-supplied message ID for the message.
 **route**                | Route     | Information on the keyword the message has been matched to, and where the message was routed afterwards. Most fields in this structure are included for debugging purposes, with the exception of “keyword”, which contains the keyword matched. The content of route will differ depending on the type of matching used.
 **gateCustomParameters** | KeyValue  | If there are custom parameters required for delivery, they will be here. Usually blank.
-**customParameters**     | KeyValue  | Information from the SMSC which might be mirrored information from other fields, for debugging.
+**customParameters** | KeyValue  | Information from the SMSC which might be mirrored information from other fields, for debugging.   
 
-    
+
+### Content parameters 
    
-**content parameter | Data type | Description
-------------------- | --------- | -----------
-type**              | String    | The type of message. Will usually be “SMS” or “MMS”.
+**content parameter** | **Data type** | **Description**
+--------------------- | ------------- | ---------------
+**type**              | String    | The type of message. Will usually be “SMS” or “MMS”.
 **userData**        | String    | The content of the message sent by the end-user.
 **encoding**        | String    | The encoding of the message. Will usually be “TEXT”.
 
 
+### Route parameters 
 
-**route parameter Data type Description
-type** String Contains information on how the
-message was routed to you. Contains
-KEYWORD_ROUTE if the message
-matched a keyword, or
-SUBNUMBER_ROUTE if the message
-matched a subnumber.
-**id** String The ID of either the subnumber or the
-keyword matched.
-**refId** String A reference ID for this keyword or
-subnumber route. This string can be set
-by Support if you want to use it for
-routing internally.
-**gateIds** <List>String A list of the gate(s) this keyword or
-subnumber forwards to.
-**platformId** String The platformId of the platform which
-received this message. Will usually be
-“SMSC”.
-**platformPartnerId** String Your partnerId
-**platformServiceType** String Can be set to any string by Support. Used
-to differentiate different types of services
-on your end, if needed.
-**platformServiceId** String Can be set to any string by Support. Used
-to differentiate different services on your
-end, if needed.
-**customParameters** KeyValue Any custom parameters needed for this
-message. Usually blank.
-**number** String The shortnumber this routing rule applies
-to.
-**startRange** String Only if subnumbers are used. Contains
-the start of the range of subnumbers
-matched.
-**stopRange** String Only if subnumbers are used. Contains
-the end of subnumbers matched.
-**keyword** String Only if keyword is used. Contains the
-keyword that was matched.
-**keywordType** String Contains the type of matching used for
-this keyword. Support will advise you on
-the different types of keyword types
-when setting up the keyword, if needed.
-**active** Boolean Whether the keyword is active. Will
-always be true.
-**start** DateTime The start date of the keyword. Will always
-be in the past.
-**end** DateTime The expiry date of the keyword. Will
-always be in the future.
+**route parameter** | **Data type** | **Description**
+------------------- | ------------- | ---------------
+**type** | String | Contains information on how the message was routed to you. Contains KEYWORD_ROUTE if the message matched a keyword, or SUBNUMBER_ROUTE if the message matched a subnumber.
+**id** | String | The ID of either the subnumber or the keyword matched.
+**refId** | String | A reference ID for this keyword or subnumber route. This string can be set by Support if you want to use it for routing internally.
+**gateIds** | <List>String | A list of the gate(s) this keyword or subnumber forwards to.
+**platformId** | String | The platformId of the platform which received this message. Will usually be “SMSC”.
+**platformPartnerId** | String | Your partnerId
+**platformServiceType** | String | Can be set to any string by Support. Used to differentiate different types of services on your end, if needed.
+**platformServiceId** | String | Can be set to any string by Support. Used to differentiate different services on your end, if needed.
+**customParameters** | KeyValue|  Any custom parameters needed for this message. Usually blank.
+**number** | String | The shortnumber this routing rule applies to.
+**startRange** | String | Only if subnumbers are used. Contains the start of the range of subnumbers matched.
+**stopRange** | String | Only if subnumbers are used. Contains the end of subnumbers matched.
+**keyword** | String | Only if keyword is used. Contains the keyword that was matched.
+**keywordType** | String | Contains the type of matching used for this keyword. Support will advise you on the different types of keyword types when setting up the keyword, if needed.
+**active** | Boolean | Whether the keyword is active. Will always be true.
+**start** | DateTime | The start date of the keyword. Will always be in the past.
+**end** | DateTime | The expiry date of the keyword. Will always be in the future.
+**shared** | Boolean | Whether this keyword will forward to multiple services. With the exception of STOP services, this will always be false.
+**description** | String | Human-readable description of the service.
 
-
-
-```
-route parameter Data type Description
-shared Boolean Whether this keyword will forward to
-multiple services. With the exception of
-STOP services, this will always be false.
-description String Human-readable description of the
-service.
-```
 ## Examples
 
 For most purposes, you are mainly interested in the “source”, “route”:”keyword”, and
@@ -151,6 +120,7 @@ In these examples, some ID numbers have been replaced with 0.
 This example is an example of a user with phone number +4741560067 sending a message
 to shortnumber 2333 with the text “Bclt hello”.
 
+```json
 {
 "destination": "NO- 2333 ",
 "subNumber": null,
@@ -181,10 +151,6 @@ to shortnumber 2333 with the text “Bclt hello”.
 "keyword": "BCLT",
 "keywordType": "FIRST_WORD",
 "active": true,
-
-
-
-
 "start": "2015- 11 - 17T00:00:00Z",
 "end": "2016- 11 - 17T00:00:00Z",
 "shared": false,
@@ -200,7 +166,7 @@ to shortnumber 2333 with the text “Bclt hello”.
 "platformId": " 0 "
 }
 }
-
+```
 
 
 ### Example sent to a subnumber
@@ -209,6 +175,7 @@ This example shows how the request will look when the message is sent to a subnu
 rather than a keyword. This example is sent from +4741560067 to shortcode 2333,
 subnumber 9999999989. The text of the message is “Hello, Dolly!”
 
+```json
 {
 "destination": "NO-2414",
 "subNumber": 9999999989 ,
@@ -249,60 +216,34 @@ subnumber 9999999989. The text of the message is “Hello, Dolly!”
 "platformId": " 0 "
 }
 }
-
-
-## The following hosts are currently used for outgoing messaging.
-
-      - 2 /
-- Before you begin
-- Scope of this document
-- Capabilities of “Common” platform.......................................................................................
-- Terms and glossary
-   - MO message
-   - IP addresses
-   - Character encoding
-   - KeyValue
-- Receiving MO messages
-- Examples
-   - Example sent to a keyword
-   - Example sent to a subnumber
-- Appendix
-- Changelog of this document
-      - 9 /
-- Appendix
-   - socks1.sp247.net 195.84.162. Hostname(s) IP address(es)
-   - socks2.sp247.net 194.71.165.
-   - socks3.sp247.net 195.84.162.
-   - socks4.sp247.net 194.71.165.
-   - socks5.sp247.net 195.84.162.
-   - socks6.sp247.net 194.71.165.
-   - s1.n-eu.linkmobility.io 213.242.87.
-   - s[X].n-eu.linkmobility.io 213.242.87.3 7 -
-   - s 20 .n-eu.linkmobility.io 213.242.87.
-   - s1.no.linkmobility.io 213.242.87.
-   - s[X].no.linkmobility.io 213.242.87.6 9 -
-   - s20.no.linkmobility.io 213.242.87.
-   - s1.s-eu.linkmobility.io 217.163.95.
-   - s[X].s-eu.linkmobility.io 217.163.95.19 7 -
-   - s20.s-eu.linkmobility.io 217.163.95.
-   - s1.deb.linkmobility.io 62.67.62.
-   - s[X].deb.linkmobility.io 62.67.62.6 9 -
-   - s20.deb.linkmobility.io 62.67.62.
-   - s1.c-eu.linkmobility.io 62.67.62.
-   - s[X].c-eu.linkmobility.io 62.67.62.10 2 -
-   - s20.c-eu.linkmobility.io 62.67.62.1
-
-
-
-## Changelog of this document
-
 ```
-Date Version Author Changes
-2015 - 11 - 24 1.0 BMS Initial version
-2017 - 06 - 07 1. 1 KCN Updated document
-name and minor
-changes
-2019 - 07 - 03 1.2 EP Minor changes and
-added Appendix 1
-```
+
+## Appendix 1
+The following hosts are currently used for outgoing messaging.
+
+**Hostname(s)** | **IP address(es)**
+--- | ---
+socks1.sp247.net | 195.84.162.34 
+socks2.sp247.net | 194.71.165.71
+socks3.sp247.net | 195.84.162.16
+socks4.sp247.net | 194.71.165.98
+socks5.sp247.net | 195.84.162.3
+socks6.sp247.net | 194.71.165.122
+s1.n-eu.linkmobility.io | 213.242.87.36
+s[X].n-eu.linkmobility.io | 213.242.87.37 - 54
+s20.n-eu.linkmobility.io | 213.242.87.55
+s1.no.linkmobility.io | 213.242.87.68
+s[X].no.linkmobility.io | 213.242.87.69 - 86
+s20.no.linkmobility.io | 213.242.87.87
+s1.s-eu.linkmobility.io | 217.163.95.
+s[X].s-eu.linkmobility.io | 217.163.95.197 - 214
+s20.s-eu.linkmobility.io | 217.163.95.215
+s1.deb.linkmobility.io | 62.67.62.68
+s[X].deb.linkmobility.io | 62.67.62.69 - 86
+s20.deb.linkmobility.io | 62.67.62.87
+s1.c-eu.linkmobility.io | 62.67.62.101
+s[X].c-eu.linkmobility.io | 62.67.62.102 - 119
+s20.c-eu.linkmobility.io | 62.67.62.1120
+
+
 
