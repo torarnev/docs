@@ -1,0 +1,47 @@
+{
+    "ApplicationSettings": {
+        "Environment": "Dev",
+ 
+        "Apis": [
+          	{
+          		"id": "1",
+          		"apiName": "Mobile Invoice Api",
+          		"gettingStartedUrl": "https://raw.githubusercontent.com/torarnev/docs/master/docs/sources/MobileInvoice/GettingStarted.md",
+          		"swaggerJsonUrl": "https://pay-core.linkmobility.com/swagger/docs/V2",
+          		"samplesUrl": "https://raw.githubusercontent.com/torarnev/docs/master/docs/samples/mobileinvoice-samples.md",
+          		"featuresUrl": "https://raw.githubusercontent.com/torarnev/docs/master/docs/sources/MobileInvoice/Features.md",
+          		"overviewUrl": "https://raw.githubusercontent.com/torarnev/docs/master/docs/sources/MobileInvoice/Overview.md"
+          	},
+          	{
+          		"id": "2",
+          		"apiName": "Link SMS REST API (Send)",
+          		"gettingStartedUrl": "https://raw.githubusercontent.com/torarnev/docs/master/docs/gettingstarted/sources/SmsRestApi.md",
+          		"swaggerJsonUrl": "",
+          		"samplesUrl": "https://raw.githubusercontent.com/torarnev/DocSampleTest/master/CodeSnippets/samples.md",
+          		"featuresUrl": "",
+          		"overviewUrl": ""
+          	},
+          	{
+          		"id": "3",
+          		"apiName": "Gateway API",
+          		"gettingStartedUrl": "",
+          		"swaggerJsonUrl": "https://torarnev.github.io/docs/json/gatewayapi.json",
+          		"samplesUrl": "",
+          		"featuresUrl": "",
+          		"overviewUrl": ""
+          	},
+          	{
+          		"id": "4",
+          		"apiName": "Link SMS REST API (Receive)",
+          		"gettingStartedUrl": "",
+          		"swaggerJsonUrl": "",
+          		"samplesUrl": "",
+          		"featuresUrl": "https://raw.githubusercontent.com/torarnev/docs/master/docs/sources/SmsReceiveRestApi/features.md",
+          		"overviewUrl": ""
+          	}
+  
+  
+        ]
+    }
+  }
+  
