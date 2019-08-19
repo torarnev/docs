@@ -1,9 +1,29 @@
+<a id="markdown-contents" name="contents"></a>
 # Contents
 <!-- TOC depthFrom:1 insertAnchor:true -->
+
+- [Contents](#contents)
+  - [Before you begin](#before-you-begin)
+  - [Scope of this document](#scope-of-this-document)
+  - [Capabilities of “Common” platform](#capabilities-of-common-platform)
+  - [Terms and glossary](#terms-and-glossary)
+    - [MO message](#mo-message)
+    - [IP addresses](#ip-addresses)
+    - [Character encoding](#character-encoding)
+    - [KeyValue](#keyvalue)
+  - [Receiving MO messages](#receiving-mo-messages)
+    - [Parameters](#parameters)
+    - [Content parameters](#content-parameters)
+    - [Route parameters](#route-parameters)
+  - [Examples](#examples)
+    - [Example sent to a keyword](#example-sent-to-a-keyword)
+    - [Example sent to a subnumber](#example-sent-to-a-subnumber)
+  - [Appendix 1](#appendix-1)
 
 <!-- /TOC -->
 
 
+<a id="markdown-before-you-begin" name="before-you-begin"></a>
 ## Before you begin
 
 Please make sure you have provided to Link Mobility Support an URL where Common shall
@@ -11,6 +31,7 @@ deliver your messages.
 Please make an opening in your firewall if necessary so that Common can connect to your
 system. For a list of the addresses Common will connect from, see below.
 
+<a id="markdown-scope-of-this-document" name="scope-of-this-document"></a>
 ## Scope of this document
 
 This document will describe the Application Programming Interface (API) to receive text
@@ -19,19 +40,23 @@ separate document.
 Common is a REST API. A familiarity with REST APIs is assumed.
 Messages will be delivered in JSON format. A basic familiarity with JSON is assumed.
 
+<a id="markdown-capabilities-of-common-platform" name="capabilities-of-common-platform"></a>
 ## Capabilities of “Common” platform
 
 Common is a high-capacity, high-availability SMS gateway designed to let you send and
 receive SMS Text messages. Messages can contain any character in the UTF-8 2-byte
 character set.
 
+<a id="markdown-terms-and-glossary" name="terms-and-glossary"></a>
 ## Terms and glossary
 
+<a id="markdown-mo-message" name="mo-message"></a>
 ### MO message
 
 Mobile Originated message. Refers to any text message sent from an end-user’s handset to
 you.
 
+<a id="markdown-ip-addresses" name="ip-addresses"></a>
 ### IP addresses
 
 When delivering a message to you, the requests can be coming from several different IP
@@ -40,10 +65,12 @@ Appendix 1 contains the hostnames and IP addresses that are currently active.
 Please configure your firewalls so that these hosts/networks can connect to your systems to
 deliver messages.
 
+<a id="markdown-character-encoding" name="character-encoding"></a>
 ### Character encoding
 
 All communication to and from Common will be in UTF-8 encoding.
 
+<a id="markdown-keyvalue" name="keyvalue"></a>
 ### KeyValue
 
 Contains parameters and values in a JSON object.
@@ -52,11 +79,13 @@ Example
 ```json
 { "key1":"value1", "key2": "value2" }
 ```
+<a id="markdown-receiving-mo-messages" name="receiving-mo-messages"></a>
 ## Receiving MO messages
 
 When Common forwards an MO message to you, it will be POST:ed to your service, in either
 XML or JSON formats. The format is described in the following table:
 
+<a id="markdown-parameters" name="parameters"></a>
 ### Parameters
 
 **Parameter**            | **Data type** | **Description** 
@@ -75,6 +104,7 @@ XML or JSON formats. The format is described in the following table:
 **customParameters** | KeyValue  | Information from the SMSC which might be mirrored information from other fields, for debugging.   
 
 
+<a id="markdown-content-parameters" name="content-parameters"></a>
 ### Content parameters 
    
 **content parameter** | **Data type** | **Description**
@@ -84,6 +114,7 @@ XML or JSON formats. The format is described in the following table:
 **encoding**        | String    | The encoding of the message. Will usually be “TEXT”.
 
 
+<a id="markdown-route-parameters" name="route-parameters"></a>
 ### Route parameters 
 
 **route parameter** | **Data type** | **Description**
@@ -108,6 +139,7 @@ XML or JSON formats. The format is described in the following table:
 **shared** | Boolean | Whether this keyword will forward to multiple services. With the exception of STOP services, this will always be false.
 **description** | String | Human-readable description of the service.
 
+<a id="markdown-examples" name="examples"></a>
 ## Examples
 
 For most purposes, you are mainly interested in the “source”, “route”:”keyword”, and
@@ -115,6 +147,7 @@ For most purposes, you are mainly interested in the “source”, “route”:�
 
 In these examples, some ID numbers have been replaced with 0.
 
+<a id="markdown-example-sent-to-a-keyword" name="example-sent-to-a-keyword"></a>
 ### Example sent to a keyword
 
 This example is an example of a user with phone number +4741560067 sending a message
@@ -169,6 +202,7 @@ to shortnumber 2333 with the text “Bclt hello”.
 ```
 
 
+<a id="markdown-example-sent-to-a-subnumber" name="example-sent-to-a-subnumber"></a>
 ### Example sent to a subnumber
 
 This example shows how the request will look when the message is sent to a subnumber
@@ -218,6 +252,7 @@ subnumber 9999999989. The text of the message is “Hello, Dolly!”
 }
 ```
 
+<a id="markdown-appendix-1" name="appendix-1"></a>
 ## Appendix 1
 The following hosts are currently used for outgoing messaging.
 
