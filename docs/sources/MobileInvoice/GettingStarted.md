@@ -28,10 +28,10 @@ The Payment API allows HTTPS only, and is tested for security threats annualy.
 
 API urls
 
-| Environment | BaseUrl |
-| ----------- | ------- |
-| Production | "https://pay-core.linkmobility.com" |
-| Test | "https://test-pay-core.linkmobility.com" |
+Environment | BaseUrl
+----------- | -------
+Production | "https://pay-core.linkmobility.com"
+Test | "https://test-pay-core.linkmobility.com"
 
 Generate a HMAC authentication header (See Creating hmac),  
 including the HMAC signature in the request.  
