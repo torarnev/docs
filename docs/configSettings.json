@@ -1,5 +1,4 @@
-{
-    "ApplicationSettings": {
+"ApplicationSettings": {
         "Environment": "Dev",
  
         "Apis": [
@@ -43,5 +42,4 @@
   
         ]
     }
-  }
   
