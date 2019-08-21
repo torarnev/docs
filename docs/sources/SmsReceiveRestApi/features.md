@@ -1,4 +1,4 @@
-*Contents
+* Contents
 
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
