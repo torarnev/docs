@@ -1,5 +1,3 @@
-* Contents
-
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
 - [Before you begin](#before-you-begin)
