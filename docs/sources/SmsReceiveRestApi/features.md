@@ -1,24 +1,23 @@
-<a id="markdown-contents" name="contents"></a>
-# Contents
+*Contents
+
 <!-- TOC depthFrom:1 insertAnchor:true -->
 
-- [Contents](#contents)
-  - [Before you begin](#before-you-begin)
-  - [Scope of this document](#scope-of-this-document)
-  - [Capabilities of “Common” platform](#capabilities-of-common-platform)
-  - [Terms and glossary](#terms-and-glossary)
-    - [MO message](#mo-message)
-    - [IP addresses](#ip-addresses)
-    - [Character encoding](#character-encoding)
-    - [KeyValue](#keyvalue)
-  - [Receiving MO messages](#receiving-mo-messages)
-    - [Parameters](#parameters)
-    - [Content parameters](#content-parameters)
-    - [Route parameters](#route-parameters)
-  - [Examples](#examples)
-    - [Example sent to a keyword](#example-sent-to-a-keyword)
-    - [Example sent to a subnumber](#example-sent-to-a-subnumber)
-  - [Appendix 1](#appendix-1)
+- [Before you begin](#before-you-begin)
+- [Scope of this document](#scope-of-this-document)
+- [Capabilities of “Common” platform](#capabilities-of-common-platform)
+- [Terms and glossary](#terms-and-glossary)
+  - [MO message](#mo-message)
+  - [IP addresses](#ip-addresses)
+  - [Character encoding](#character-encoding)
+  - [KeyValue](#keyvalue)
+- [Receiving MO messages](#receiving-mo-messages)
+  - [Parameters](#parameters)
+  - [Content parameters](#content-parameters)
+  - [Route parameters](#route-parameters)
+- [Examples](#examples)
+  - [Example sent to a keyword](#example-sent-to-a-keyword)
+  - [Example sent to a subnumber](#example-sent-to-a-subnumber)
+- [Appendix 1](#appendix-1)
 
 <!-- /TOC -->
 
