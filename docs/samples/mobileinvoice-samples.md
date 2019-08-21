@@ -5,6 +5,10 @@
 ### C#
 [HMAC sample c#](sample1.md)
 
+### C#
+[HMAC sample c#](test.cs)
+
+
 ### Java
 [HMAC sample java](hmacSampleJava.md)
 
